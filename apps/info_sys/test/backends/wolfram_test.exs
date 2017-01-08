@@ -6,7 +6,7 @@ defmodule InfoSys.Backends.WolframTest do
     ref = make_ref()
     {:ok, pid} = Wolfram.start_link("1 + 1", ref, self(), 1)
     Process.monitor(pid)
-    assert_receive {:results, ^ref, [%InfoSys.Result{backend: "wolfram", score: 95, text: "1", url: nil}]}
+    assert_receive {:results, ^ref, [%InfoSys.Result{backend: "wolfram", score: 95, text: "2", url: nil}]}
     assert_receive {:DOWN, _ref, :process, ^pid, :normal}
   end
 
