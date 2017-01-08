@@ -38,7 +38,7 @@ defmodule InfoSys do
 
   defp await_results(children, opts) do
     timeout = opts[:timeout] || 5000
-    timer = Process.send_after(self(), :timeout, timeout)
+    timer = Process.send_after(self(), :timedout, timeout)
     results = await_result(children, [], :infinity)
     cleanup(timer)
     results
